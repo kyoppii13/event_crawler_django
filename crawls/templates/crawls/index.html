@@ -6,46 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"-->
     {% load static %}
     <link rel="stylesheet" href="{% static 'crawls/css/bootstrap.min.css' %}">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'crawls/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'crawls/css/style.css' %}" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="#">EventCrawler</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" style="color:#7dfcfd;">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://github.com/Kyou13">Github</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://github.com/Kyou13" style="color:#7dfcfd;">Github</a>
       </li>
 
     </ul>
   </div>
 </nav>
     <div class="container">
-    <h1>CRAWLS</h1>
-    <!-- staticフォルダが参照できるようになる -->
-    {% load static %}
+    <div class="logo">
+        <img src="{%  static "crawls/logo.png" %}" class="img-fluid">
+
+    </div>
+
+    <h2>ABOUT</h2>
+    <p>
+    This site crawls
+        <span><img src="{%  static "crawls/connpass_logo.png" %}" class="img-fluid connpass_logo"></span>
+        data.
+    </p>
+    <form action="" method="post" class="form-horizontal" role="form">
+        <div class="button_wrapper">
+        <button type="submit" >Run</button>
+            </div>
+    </form>
+    <h2>CRAWLED DATA</h2>
+        <!-- staticフォルダが参照できるようになる -->
     <!--img src="{% static "crawls/home.jpg" %}" class="img-fluid"-->
     {% for crawl in crawls.all %}
-        <a href="{% url 'crawl_detail' crawl.id %}">{{ crawl.title }}</a>
+        <a href="{% url 'crawl_detail' crawl.id %}" >{{ crawl.title }}</a>
         <br>
         <br>
     {% endfor %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script-->
     <script src="{% static 'crawls/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'crawls/js/bootstrap.bundle.min.js' %}"></script>
     </div>

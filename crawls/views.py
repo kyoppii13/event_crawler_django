@@ -13,3 +13,5 @@ def crawl_detail(request,crawl_id):
     crawl = get_object_or_404(Crawl,pk=crawl_id)
     return render(request,'crawls/crawl_detail.html',{'crawl':crawl})
 
+def crawl_items(request):
+    return render(request,'crawls/crawl_items.html')
