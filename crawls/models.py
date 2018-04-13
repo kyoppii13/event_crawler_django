@@ -1,9 +1,12 @@
 from django.db import models
 
 # Create your models here.
-class Crawl(models.Model):
+class ScrapyItem(models.Model):
     title = models.TextField()
-    url = models.URLField()
+    url = models.URLField(primary_key=True)
     address = models.TextField()
     img_url = models.URLField()
-    date = models.CharField(max_length=10)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.url

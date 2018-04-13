@@ -1,0 +1,20 @@
+body{
+  background-color: black;
+}
+
+.button{
+  text-align: center;
+  border: 1px solid #FFF;
+  width: 20%;
+}
+
+.button:hover{
+  background-color: #5a6268;
+}
+
+a.button-add{
+  color: white;
+  display: block;
+  padding: 5px 0;
+  text-align: center;
+}

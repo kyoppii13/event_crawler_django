@@ -1,0 +1,37 @@
+{%  extends "crawls/base.html" %}
+{%  load bootstrap4 %}
+{% block title %}Crawled list{% endblock title %}
+{% block extra_css %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'crawls/css/style_list.css' %}" />
+{% endblock extra_css %}
+
+{% block content %}
+    <h2>{{ month }}月のAIイベント</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Address</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for crawl in crawls.all %}
+            <tr>
+                <td>
+                    <a href="{{ crawl.url }}">{{ crawl.title }}</a>
+                </td>
+                <td>
+                    {{ crawl.address }}
+                </td>
+                <td>
+                    {{ crawl.date }}
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

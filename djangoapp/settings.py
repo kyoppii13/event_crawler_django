@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crawls.apps.CrawlConfig',
+    #'crawls.apps.CrawlConfig',
+    'crawls',
     'bootstrap4',
 ]
 
@@ -78,8 +79,13 @@ WSGI_APPLICATION = 'djangoapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'django_event_crawl',
+        'USER': 'django',
+        'PASSWORD': 'password',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -137,10 +143,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+ROOT_PATH = os.path.dirname(__file__)
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    [os.path.join(ROOT_PATH, 'static')]
 )
+

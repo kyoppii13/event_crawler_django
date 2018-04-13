@@ -13,6 +13,16 @@ a{
 p{
   text-align: left;
 }
+
+.table-fixed {
+  width: 100%;
+}
+.table-fixed tbody{
+  height:500px;
+  overflow-y:auto;
+  width: 100%;
+}
+
 .button_wrapper{
   text-align: center;
 }
@@ -23,12 +33,31 @@ p{
   height: 20px;
 }
 .container{
-  max-width: 45em;
+  max-width: 70em;
 }
-button{
-  background-color: #000;
-  color: #fff;
-  border-color: #fff;
+
+table{
+  table-layout: fixed;
+}
+thead, tbody{
+  display: block;
+  width: 100%;
+}
+tbody{
+  overflow-y: scroll;
+  height: 500px;
+}
+.button{
+  text-align: center;
+  border: 1px solid #FFF;
+  width: 20%;
+  margin: 0 auto;
+}
+
+a.button-add{
+  display: block;
+  padding: 7px 0;
+  text-align: center;
 }
 
 .navbar {

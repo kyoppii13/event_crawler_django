@@ -23,5 +23,4 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('crawls/', include('crawls.urls')),
-    path('crawls/<int:crawl_id>/', views.crawl_detail, name='crawl_detail'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

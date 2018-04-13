@@ -1,17 +1,74 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
-from .models import Crawl
+from .models import ScrapyItem
+from crawls.forms import CrawlForm
+from scrapyd_api import ScrapydAPI
+import datetime
+import csv
+import io
 
 # Create your views here.
+scrapyd = ScrapydAPI('http://localhost:6800')
 
 def index(request):
-    # return HttpResponse("Hello World")
-    crawls = Crawl.objects
-    return render(request, 'crawls/index.html', {'crawls':crawls})
+    # if request.method == 'POST':
+    #     url = request.POST.get('url')
+    # return render(request, 'crawls/index.html')
+    today = datetime.datetime.today()
+    month = today.month
+    crawls = ScrapyItem.objects.filter(date__month=month).order_by('-date').reverse()
+    return render(request, 'crawls/index.html', {'crawls': crawls, 'month':month})
 
-def crawl_detail(request,crawl_id):
-    crawl = get_object_or_404(Crawl,pk=crawl_id)
-    return render(request,'crawls/crawl_detail.html',{'crawl':crawl})
+# def crawl_detail(request,crawl_id):
+#     crawl = get_object_or_404(ScrapyItem,pk=crawl_id)
+#     return render(request,'crawls/crawl_detail.html',{'crawl': crawl})
 
-def crawl_items(request):
-    return render(request,'crawls/crawl_items.html')
+def crawl_list(request):
+    today = datetime.datetime.today()
+    month = today.month
+    crawls = ScrapyItem.objects.filter(date__month=month).order_by('-date').reverse()
+
+    return render(request, 'crawls/crawl_list.html', {'crawls':crawls, 'month':month})
+
+# def crawl_edit(request, crawl_id=None):
+#     if crawl_id:
+#         crawl = get_object_or_404(ScrapyItem, pk=crawl_id)
+#     else:
+#         crawl = ScrapyItem()
+#
+#     if request.method == 'POST':
+#         form = CrawlForm(request.POST, instance=crawl)
+#         if form.is_valid():
+#             crawl = form.save(commit=False)
+#             crawl.save()
+#             return redirect('crawl_list')
+#     else:
+#         form = CrawlForm(instance=crawl)
+#
+#     return render(request, 'crawls/crawl_edit.html', dict(form=form, crawl_id=crawl_id))
+#
+# def crawl_del(request, crawl_id):
+#     crawl = get_object_or_404(ScrapyItem, pk=crawl_id)
+#     crawl.delete()
+#     return redirect('crawl_list')
+
+# def crawl(request):
+#     scrapyd.schedule('connpass_crawler', 'connpass')
+#     return redirect('top')
+
+def crawl(request):
+    today = datetime.datetime.today()
+    year = today.year
+    month = today.month
+
+    response = HttpResponse(content_type='text/csv;charset=Shift-JIS')
+    response['Content-Disposition'] = 'attachment; filename="{}_{}.csv"'.format(year,month)
+
+    sio = io.StringIO()
+    writer = csv.writer(sio)
+    crawls = ScrapyItem.objects.filter(date__month=month).order_by('-date').reverse()
+    writer.writerow(['title', 'address', 'date', 'url', 'img_url'])
+    for crawl in crawls:
+        writer.writerow([crawl.title, crawl.address, crawl.date, crawl.url, crawl.img_url])
+    response.write(sio.getvalue().encode('utf-16'))
+    return response

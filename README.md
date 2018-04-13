@@ -77,6 +77,21 @@ $python manage.py createsuperuser
 ## templateengine
 - ModelとViewをつなぐもの
 
+## form
+- <app名>/forms.pyを作成
+```
+from django.forms import ModelForm
+from cms.models import Book
+
+
+class BookForm(ModelForm):
+    """書籍のフォーム"""
+    class Meta:
+        model = Book
+        fields = ('name', 'publisher', 'page', )
+```
+[qiita](https://qiita.com/kaki_k/items/6e17597804437ef170ae)
+
 ---
 
 ## Links
@@ -94,4 +109,33 @@ $sqlite3 db.sqlite3
 .tables
 ```
 
+# MySQL
+```
+CREATE USER user IDENTIFIED BY [PASSWORD] 'password';
+```
+```
+GRANT 権限 ON レベル TO user;
+```
 
+## heroku
+[qiita](https://qiita.com/Shitimi_613/items/6627d0ce042d38b86893)
+- Procfileでプロジェクト名を書き換える
+- runtaime.txtは最新のpython verを指定
+
+## Error
+- CSS読み込めない
+```
+STATIC_URL = '/static/'
+
+# Additional locations of static files
+ROOT_PATH = os.path.dirname(__file__)
+STATICFILES_DIRS = (
+    [os.path.join(ROOT_PATH, 'static')]
+)
+```
+
+# 対比
+        <a href="{%  url 'crawl_add' %}" class='button-add'>Add</a-->
+        <a href="{% url 'crawl_detail' crawl.id %}" >{{ crawl.title }}</a-->
+        <!-- a href="{% url 'crawl_mod' crawl.id %}" class="btn btn-outline-primary btn-sm">編集</a>
+        <a href="{% url 'crawl_del' crawl.id %}" class="btn btn-outline-danger btn-sm">削除</a-->

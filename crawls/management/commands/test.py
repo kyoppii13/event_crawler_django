@@ -1,11 +1,13 @@
 from django.core.management.base import BaseCommand
-from ...models import Crawl
+from crawls.models import Crawl
 
 
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
-        parser.add_argument('parameters', nargs='+', type=int)
+        # nargs='+' は引数リストにまとめる
+        parser.add_argument('title')
 
     def handle(self, *args, **options):
-        print(sum(options['parameters']))
+        title = options['title']
+        print(title)
