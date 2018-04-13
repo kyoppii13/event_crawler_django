@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'heroku',
         'USER': 'baec7df20bc55e',
         'PASSWORD': '52779caf',
-        'HOST': 'us-cdbr-iron-east-05.cleardb.net/heroku_2e8ee3dfbde3b68',
+        'HOST': 'us-cdbr-iron-east-05.cleardb.net',
         'PORT': '',
     }
 }
