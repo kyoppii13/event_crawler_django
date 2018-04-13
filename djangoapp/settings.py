@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -132,9 +132,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/pics/'
 MEDIA_ROOT = BASE_DIR
 
-# Parse database configuration from $DATABASE_URL
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+# # Parse database configuration from $DATABASE_URL
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
