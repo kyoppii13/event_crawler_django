@@ -14,11 +14,13 @@
     クローラーにより定期的に情報収集。
         <!--span><img src="{%  static "crawls/connpass_logo.png" %}" class="img-fluid connpass_logo"></span-->
     </p>
+
+    <h2>{{ month }}月のAIイベント</h2>
+    <hr>
     <div class="button center-block">
         <a href="{%  url 'out_csv' %}" class='button-add'>CSVとして出力</a>
     </div>
-
-    <h2>{{ month }}月のAIイベント</h2>
+    <hr>
     <div class="table-wrapper">
     <table class="table table-dark table-hover">
         <thead>
