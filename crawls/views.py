@@ -14,9 +14,10 @@ def top(request, month=None, year=None):
     # if request.method == 'POST':
     #     url = request.POST.get('url')
     # return render(request, 'crawls/index.html')
-    today = datetime.datetime.today()
-    month = today.month
-    year = today.year
+    if month is None and year is None:
+        today = datetime.datetime.today()
+        month = today.month
+        year = today.year
 
     crawls = ScrapyItem.objects.filter(date__year=year).filter(date__month=month).order_by('-date').reverse()
     return render(request, 'crawls/index.html', {'crawls': crawls, 'month': month, 'year': year})
