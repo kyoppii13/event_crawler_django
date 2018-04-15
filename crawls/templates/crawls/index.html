@@ -17,7 +17,7 @@
     <h2>{{ month }}月のAIイベント</h2>
     <hr>
     <div class="button_wrapper center-block">
-        <a href="{%  url 'out_csv' %}" class='button'>CSVとして出力</a>
+        <a href="/api/{{ year }}-{{ month }}" class='button'>CSVとして出力</a>
     </div>
     <div class="pager">
     <div class="previous button_wrapper">
