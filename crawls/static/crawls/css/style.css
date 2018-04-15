@@ -39,6 +39,8 @@ p{
 
 .button_wrapper{
   text-align: center;
+  opacity: 1;
+  background-color: black;
 }
 .container .logo{
   text-align: center;
@@ -61,6 +63,7 @@ p{
   position: absolute;
   top:0;
   left:0;
+
 }
 
 table{
@@ -96,6 +99,7 @@ a.button{
 
 .navbar {
   background-color: #000000;
+  opacity: 0.8;
 }
 
 .navbar .navbar-brand {
