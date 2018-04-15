@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
-from .models import ScrapyItem
+from crawls.models import ScrapyItem
 from crawls.forms import CrawlForm
 from scrapyd_api import ScrapydAPI
 import datetime
@@ -10,14 +10,16 @@ import io
 # Create your views here.
 scrapyd = ScrapydAPI('http://localhost:6800')
 
-def index(request):
+def top(request, month=None, year=None):
     # if request.method == 'POST':
     #     url = request.POST.get('url')
     # return render(request, 'crawls/index.html')
     today = datetime.datetime.today()
     month = today.month
-    crawls = ScrapyItem.objects.filter(date__month=month).order_by('-date').reverse()
-    return render(request, 'crawls/index.html', {'crawls': crawls, 'month':month})
+    year = today.year
+
+    crawls = ScrapyItem.objects.filter(date__year=year).filter(date__month=month).order_by('-date').reverse()
+    return render(request, 'crawls/index.html', {'crawls': crawls, 'month': month, 'year': year})
 
 # def crawl_detail(request,crawl_id):
 #     crawl = get_object_or_404(ScrapyItem,pk=crawl_id)
@@ -56,10 +58,11 @@ def crawl_list(request):
 #     scrapyd.schedule('connpass_crawler', 'connpass')
 #     return redirect('top')
 
-def crawl(request):
-    today = datetime.datetime.today()
-    year = today.year
-    month = today.month
+def crawl(request, month, year):
+    if month is None and year is None:
+        today = datetime.datetime.today()
+        year = today.year
+        month = today.month
 
     response = HttpResponse(content_type='text/csv;charset=Shift-JIS')
     response['Content-Disposition'] = 'attachment; filename="{}_{}.csv"'.format(year,month)
