@@ -12,13 +12,28 @@
     <p>
     AI関連のイベントのまとめサイト。<br>
     クローラーにより定期的に情報収集。
-        <!--span><img src="{%  static "crawls/connpass_logo.png" %}" class="img-fluid connpass_logo"></span-->
     </p>
 
     <h2>{{ month }}月のAIイベント</h2>
     <hr>
-    <div class="button center-block">
-        <a href="{%  url 'out_csv' %}" class='button-add'>CSVとして出力</a>
+    <div class="button_wrapper center-block">
+        <a href="{%  url 'out_csv' %}" class='button'>CSVとして出力</a>
+    </div>
+    <div class="pager">
+    <div class="previous button_wrapper">
+        {% if month != 1 %}
+        <a href="/{{ year }}-{{ month|add:'-1' }}" class='button'>前月</a>
+        {% else %}
+        <a href="/{{ year|add:'-1' }}-12" class='button'>前月</a>
+        {% endif %}
+    </div>
+    <div class="next button_wrapper">
+        {% if month != 12 %}
+            <a href="/{{ year }}-{{ month|add:'1' }}" class='button'>次月</a>
+        {% else %}
+            <a href="/{{ year|add:'1' }}-1" class='button'>次月</a>
+        {% endif %}
+    </div>
     </div>
     <hr>
     <div class="table-wrapper">
