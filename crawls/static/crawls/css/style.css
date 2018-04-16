@@ -97,6 +97,9 @@ a.button{
 
 }
 
+.navbar{
+  position: fixed;
+}
 .navbar .navbar-brand {
   color: #7dfcfd;
 }
