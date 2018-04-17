@@ -8,6 +8,7 @@ body{
   color: #7dfcfd;
   height: 100%;
   width: 100%;
+  font-family: "メイリオ", sans-serif;
 }
 a{
   color: #7dfcfd;
@@ -29,14 +30,6 @@ p{
 }
 .next{
   float: right;
-}
-.table-fixed {
-  width: 100%;
-}
-.table-fixed tbody{
-  height:200px;
-  overflow-y:auto;
-  width: 100%;
 }
 
 .button_wrapper{
@@ -70,6 +63,9 @@ p{
 
 table{
   table-layout: fixed;
+}
+th{
+
 }
 thead, tbody{
   display: block;

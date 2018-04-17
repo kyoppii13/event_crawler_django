@@ -122,6 +122,18 @@ GRANT 権限 ON レベル TO user;
 - Procfileでプロジェクト名を書き換える
 - runtaime.txtは最新のpython verを指定
 
+- import 
+```aidl
+$ mysql --host=HOST --user=USER_NAME --password=PASSWORD --reconnect DB_NAME < backup.sql
+```
+- export
+```aidl
+mysqldump -uUSER_NAME -pPASSWORD -h HOST -r backup.sql --single-transaction DB_NAME
+```
+[sequel pro](http://hhmmm.hateblo.jp/entry/2016/02/15/204638)
+
+[musqlを使う方法](https://qiita.com/maez/items/c7fe024b3b8de1dedbcd)
+
 ## Error
 - CSS読み込めない
 ```
@@ -134,8 +146,17 @@ STATICFILES_DIRS = (
 )
 ```
 
+
 # 対比
         <a href="{%  url 'crawl_add' %}" class='button-add'>Add</a-->
         <a href="{% url 'crawl_detail' crawl.id %}" >{{ crawl.title }}</a-->
         <!-- a href="{% url 'crawl_mod' crawl.id %}" class="btn btn-outline-primary btn-sm">編集</a>
         <a href="{% url 'crawl_del' crawl.id %}" class="btn btn-outline-danger btn-sm">削除</a-->
+        
+        # 'ENGINE': 'django.db.backends.mysql',
+        # # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'NAME': 'heroku_2e8ee3dfbde3b68',
+        # 'USER': 'baec7df20bc55e',
+        # 'PASSWORD': '52779caf',
+        # 'HOST': 'us-cdbr-iron-east-05.cleardb.net',
+        # 'PORT': '',
