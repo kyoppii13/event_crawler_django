@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crawls',
     'bootstrap4',
-    'schedule', # add for calender
+    # 'schedule', # add for calender
 ]
 
 MIDDLEWARE = [
@@ -66,7 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request', # Add for Calendaer
+                # 'django.template.context_processors.request', # Add for Calendaer
             ],
         },
     },
