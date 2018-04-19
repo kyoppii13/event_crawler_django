@@ -24,6 +24,7 @@ p{
 
 .pager{
   overflow: hidden;
+  clear: both;
 }
 .previous{
   float:left;
@@ -223,4 +224,15 @@ a.button{
 .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
   color: #7dfcfd;
   background-color: #20404b;
+}
+.csv-button , .article-button{
+  float: left;
+}
+
+.buttons{
+  width: 100%;
+  height: 100%;
+  transform: translateX(-50%);
+  margin-left: 50%;
+  text-align: center;
 }

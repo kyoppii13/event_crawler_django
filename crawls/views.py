@@ -76,3 +76,23 @@ def crawl(request, month, year):
         writer.writerow([crawl.title, crawl.address, crawl.date, crawl.url, crawl.img_url])
     response.write(sio.getvalue().encode('utf-16'))
     return response
+
+def article(request, month, year):
+    if month is None and year is None:
+        today = datetime.datetime.today()
+        year = today.year
+        month = today.month
+
+    response = HttpResponse(content_type='text/plain;charset=Shift-JIS')
+    response['Content-Disposition'] = 'attachment; filename="{}_{}.txt"'.format(year,month)
+
+    sio = io.StringIO()
+    crawls = ScrapyItem.objects.filter(date__month=month).order_by('-date').reverse()
+    for crawl in crawls:
+        sio.write('<h4>{}</h4>\n\
+<img src="{}"/><ul>\n\
+<li style="list-style-type: none;">\
+\n<li>\n{}\n</li>\n<li>{}</li></ul>\
+[btn]<a href="{}"" target="_blank" rel="noopener noreferrer">予約サイトへ</a>[/btn]\n\n'.format(crawl.title,crawl.img_url,crawl.date,crawl.address,crawl.url))
+    response.write(sio.getvalue().encode('utf-16'))
+    return response
