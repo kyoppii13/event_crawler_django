@@ -79,19 +79,19 @@ WSGI_APPLICATION = 'djangoapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_event_crawl',
-        'USER': 'django',
-        'PASSWORD': 'password',
-        'HOST': '',
-        'PORT': '3306',
         # 'ENGINE': 'django.db.backends.mysql',
-        # # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'NAME': 'heroku_2e8ee3dfbde3b68',
-        # 'USER': 'baec7df20bc55e',
-        # 'PASSWORD': '52779caf',
-        # 'HOST': 'us-cdbr-iron-east-05.cleardb.net',
-        # 'PORT': '',
+        # 'NAME': 'django_event_crawl',
+        # 'USER': 'django',
+        # 'PASSWORD': 'password',
+        # 'HOST': '',
+        # 'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'heroku_2e8ee3dfbde3b68',
+        'USER': 'baec7df20bc55e',
+        'PASSWORD': '52779caf',
+        'HOST': 'us-cdbr-iron-east-05.cleardb.net',
+        'PORT': '',
     }
 }
 
