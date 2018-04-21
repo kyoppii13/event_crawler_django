@@ -79,25 +79,34 @@ WSGI_APPLICATION = 'djangoapp.wsgi.application'
 
 DATABASES = {
     'default': {
+        ## mysql
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'django_event_crawl',
         # 'USER': 'django',
         # 'PASSWORD': 'password',
         # 'HOST': '',
         # 'PORT': '3306',
-        'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'heroku_2e8ee3dfbde3b68',
-        'USER': 'baec7df20bc55e',
-        'PASSWORD': '52779caf',
-        'HOST': 'us-cdbr-iron-east-05.cleardb.net',
+
+        ## heroku
+        # 'ENGINE': 'django.db.backends.mysql',
+        # # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'NAME': 'heroku_2e8ee3dfbde3b68',
+        # 'USER': 'baec7df20bc55e',
+        # 'PASSWORD': '52779caf',
+        # 'HOST': 'us-cdbr-iron-east-05.cleardb.net',
+        # 'PORT': '',
+
+        ## psql
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django_event_crawl',
+        'USER': 'scraper',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
+# Passwo'HOST': 'rd validation
+# https:'PORT': '//docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -134,6 +134,46 @@ mysqldump -uUSER_NAME -pPASSWORD -h HOST -r backup.sql --single-transaction DB_N
 
 [musqlを使う方法](https://qiita.com/maez/items/c7fe024b3b8de1dedbcd)
 
+## postgres
+サーバ起動
+```aidl
+postgres -D /usr/local/var/postgres
+```
+
+ログイン
+```aidl
+psql postgres
+```
+
+テーブル情報
+```aidl
+\l : DB一覧
+\c [DB名]: DB切り替え
+\d : テーブル一覧
+\q : psql終了
+```
+
+認証方法の変更(初回のみ)
+https://b.pyar.bz/20141021/mac-postgresql-installation/
+を参考に以下のファイルを変更
+/usr/local/var/postgres/pg_hba.conf
+
+
+ユーザ作成
+```aidl
+createuser -P <user-name>
+```
+
+DB作成
+```aidl
+createdb example-db -O <pg-user>
+```
+
+## AWS
+
+[ubuntu環境構築](http://buko106.hatenablog.jp/entry/2017/08/16/102649)
+[](https://qiita.com/akito1986/items/be5dcd1a502aaf22010b)
+
 ## Error
 - CSS読み込めない
 ```
@@ -145,18 +185,3 @@ STATICFILES_DIRS = (
     [os.path.join(ROOT_PATH, 'static')]
 )
 ```
-
-
-# 対比
-        <a href="{%  url 'crawl_add' %}" class='button-add'>Add</a-->
-        <a href="{% url 'crawl_detail' crawl.id %}" >{{ crawl.title }}</a-->
-        <!-- a href="{% url 'crawl_mod' crawl.id %}" class="btn btn-outline-primary btn-sm">編集</a>
-        <a href="{% url 'crawl_del' crawl.id %}" class="btn btn-outline-danger btn-sm">削除</a-->
-        
-        # 'ENGINE': 'django.db.backends.mysql',
-        # # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'NAME': 'heroku_2e8ee3dfbde3b68',
-        # 'USER': 'baec7df20bc55e',
-        # 'PASSWORD': '52779caf',
-        # 'HOST': 'us-cdbr-iron-east-05.cleardb.net',
-        # 'PORT': '',
