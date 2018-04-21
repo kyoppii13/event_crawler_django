@@ -169,10 +169,6 @@ DB作成
 createdb example-db -O <pg-user>
 ```
 
-## AWS
-
-[ubuntu環境構築](http://buko106.hatenablog.jp/entry/2017/08/16/102649)
-[](https://qiita.com/akito1986/items/be5dcd1a502aaf22010b)
 
 ## Error
 - CSS読み込めない
