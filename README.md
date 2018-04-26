@@ -118,6 +118,12 @@ GRANT 権限 ON レベル TO user;
 ```
 
 ## heroku
+- 最初やること
+```
+heroku create <app name>
+git remote add  <アプリ名> <URL>
+```
+
 [qiita](https://qiita.com/Shitimi_613/items/6627d0ce042d38b86893)
 - Procfileでプロジェクト名を書き換える
 - runtaime.txtは最新のpython verを指定
