@@ -169,6 +169,10 @@ DB作成
 createdb example-db -O <pg-user>
 ```
 
+## AWS
+- pro sequelでログインできない問題
+    - SSHホストはDNSを設定する
+
 
 ## Error
 - CSS読み込めない

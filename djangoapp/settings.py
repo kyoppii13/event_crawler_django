@@ -88,13 +88,13 @@ DATABASES = {
         # 'PORT': '3306',
 
         ## heroku
-        'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'heroku_2e8ee3dfbde3b68',
-        'USER': 'baec7df20bc55e',
-        'PASSWORD': '52779caf',
-        'HOST': 'us-cdbr-iron-east-05.cleardb.net',
-        'PORT': '',
+        #'ENGINE': 'django.db.backends.mysql',
+        ## 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'NAME': 'heroku_2e8ee3dfbde3b68',
+        #'USER': 'baec7df20bc55e',
+        #'PASSWORD': '52779caf',
+        #'HOST': 'us-cdbr-iron-east-05.cleardb.net',
+        #'PORT': '',
 
         ## psql
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -105,12 +105,12 @@ DATABASES = {
         # 'PORT': '',
 
         ## RDS(MYSQL)
-        #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': 'scraping',
-        #'USER': 'scraper',
-        #'PASSWORD': 'password',
-        #'HOST': 'mysqlinstance.cemknam06dlj.us-east-2.rds.amazonaws.com',
-        #'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'scraping',
+        'USER': 'scraper',
+        'PASSWORD': 'password',
+        'HOST': 'mysqlinstance.cemknam06dlj.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',
         ## memo 126.246.37.245/32
 
     }
