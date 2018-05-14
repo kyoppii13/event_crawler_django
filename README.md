@@ -92,6 +92,14 @@ class BookForm(ModelForm):
 ```
 [qiita](https://qiita.com/kaki_k/items/6e17597804437ef170ae)
 
+## url.py
+クラスベースのViewを使う時はas_view()メソッドで呼ぶ
+```
+url(r'^myapp/', IndexTemplateView.as_view())
+```
+[参照](https://www.sejuku.net/blog/25952)
+
+
 ---
 
 ## Links
@@ -138,7 +146,7 @@ mysqldump -uUSER_NAME -pPASSWORD -h HOST -r backup.sql --single-transaction DB_N
 ```
 [sequel pro](http://hhmmm.hateblo.jp/entry/2016/02/15/204638)
 
-[musqlを使う方法](https://qiita.com/maez/items/c7fe024b3b8de1dedbcd)
+[mysqlを使う方法](https://qiita.com/maez/items/c7fe024b3b8de1dedbcd)
 
 ## postgres
 サーバ起動
@@ -179,6 +187,7 @@ createdb example-db -O <pg-user>
 - pro sequelでログインできない問題
     - SSHホストはDNSを設定する
 
+http://unselectedkids.hatenablog.com/entry/2016/12/21/020344
 
 ## Error
 - CSS読み込めない

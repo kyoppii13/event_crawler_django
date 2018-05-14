@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class ScrapyItem(models.Model):
@@ -10,3 +11,13 @@ class ScrapyItem(models.Model):
 
     def __str__(self):
         return self.url
+
+class Schedule(models.Model):
+    """スケジュール."""
+
+    memo = models.TextField('メモ')
+    date = models.DateField('日付')
+    created_at = models.DateTimeField('作成日', default=timezone.now)
+
+    def __str__(self):
+        return self.memo

@@ -17,58 +17,59 @@
 
     </p>
 
-    <h2>{{ month }}月のAIイベント</h2>
+    <h2>{{ month.current | date:"m"}}月のAIイベント</h2>
     <hr>
     <div class="buttons center-block">
     <div class="button_wrapper csv-button">
-        <a href="/api/{{ year }}-{{ month }}" class='button'>CSVとして出力</a>
+        <a href="/api/{{ month.current.year }}/{{ month.current.month }}" class='button'>CSVとして出力</a>
     </div>
 
     <div class="button_wrapper article-button">
-        <a href="/article/{{ year }}-{{ month }}" class='button'>記事として出力</a>
+        <a href="/article/{{ month.current.year }}/{{ month.current.month }}" class='button'>記事として出力</a>
     </div>
     </div>
 
-    <div class="pager">
-    <div class="previous button_wrapper">
-        {% if month != 1 %}
-        <a href="/{{ year }}-{{ month|add:'-1' }}" class='button'>前月</a>
-        {% else %}
-        <a href="/{{ year|add:'-1' }}-12" class='button'>前月</a>
-        {% endif %}
+    <div class="space" style="height:100px;"></div>
+
+    <div class="button_prev_month button_wrapper">
+    <a href="{% url 'crawls:month' month.previous.year month.previous.month %}" class="button">前月</a>
     </div>
-    <div class="next button_wrapper">
-        {% if month != 12 %}
-            <a href="/{{ year }}-{{ month|add:'1' }}" class='button'>次月</a>
-        {% else %}
-            <a href="/{{ year|add:'1' }}-1" class='button'>次月</a>
-        {% endif %}
+    <div class="button_next_month button_wrapper">
+    <a href="{% url 'crawls:month' month.next.year month.next.month %}" class="button">次月</a>
     </div>
-    </div>
-    <hr>
     <div class="table-wrapper">
-    <table class="table table-dark table-hover">
+    <table class="table table-dark">
         <thead>
         <tr>
-            <th class="col-xs-5" id="th-title">Title</th>
-            <th class="col-xs-5" id="th-address">Address</th>
-            <th class="col-xs-2" id="th-date">Date</th>
+            {% for w in month.week_names %}
+                <th>{{ w }}</th>
+            {% endfor %}
         </tr>
         </thead>
         <tbody>
-
-        {% for crawl in crawls.all %}
+        {% for week in month.days %}
             <tr>
-                <td id="td-title">
-                    <a href="{{ crawl.url }}">{{ crawl.title }}</a>
+                {% for day in week %}
+                    {% if month.now == day %}
+                        <td class="table-success">
+                    {% else %}
+                        <td>
+                    {% endif %}
+                {% if month.current.month != day.month %}
+                    <!-- dateフィルター -->
+                    {{ day | date:"m/d" }}
+                {% else %}
+                    <a href="{% url 'crawls:day' day.year day.month day.day %}">{{ day.day }}</a>
+                    <!--
+                    {% for crawl in crawls %}
+                        {% if crawl.date == day %}
+                           {{ crawl.date }}
+                        {% endif %}
+                    {% endfor %}
+                    -->
+                {% endif %}
                 </td>
-                <td id="td-address">
-                    {{ crawl.address }}
-                </td>
-                <td id="td-date" style="width:20%">
-                    {{ crawl.date }}
-                </td>
-
+                {% endfor %}
             </tr>
         {% endfor %}
         </tbody>

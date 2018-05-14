@@ -69,7 +69,7 @@ th{
 
 }
 thead, tbody{
-  display: block;
+  /*display: block;*/
   width: 100%;
 }
 tbody{
@@ -85,6 +85,24 @@ tbody{
   opacity: 1;
 }
 
+.button_prev_month{
+  text-align: center;
+  border: 1px solid #FFF;
+  width: 20%;
+  float: left;
+  background-color: #000;
+  opacity: 1;
+}
+
+.button_next_month{
+  text-align: center;
+  border: 1px solid #FFF;
+  width: 20%;
+  float: right;
+  background-color: #000;
+  opacity: 1;
+}
+
 a.button{
   display: block;
   padding: 7px 0;
@@ -95,6 +113,24 @@ a.button{
  background-color: #1b1e21;
 
 }
+
+.month-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  table-layout: fixed;
+}
+
+.month-table td, .month-table th {
+  border: 1px solid #eceeef;
+  padding: .75rem;
+  vertical-align: top;
+}
+
+.month-table tr{
+  height: 100px;
+}
+
 
 .navbar{
   position: fixed;
