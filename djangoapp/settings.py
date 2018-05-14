@@ -81,13 +81,13 @@ WSGI_APPLICATION = 'djangoapp.wsgi.application'
 DATABASES = {
     'default': {
         ## mysql
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_event_crawl',
-        'USER': 'django',
-        'PASSWORD': 'password',
-        'HOST': '',
-        'PORT': '3306',
-
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'django_event_crawl',
+        #'USER': 'django',
+        #'PASSWORD': 'password',
+        #'HOST': '',
+        #'PORT': '3306',
+        #
         ## heroku
         #'ENGINE': 'django.db.backends.mysql',
         ## 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -106,12 +106,12 @@ DATABASES = {
         # 'PORT': '',
 
         ## RDS(MYSQL)
-        ## 'ENGINE': 'django.db.backends.mysql',
-        ## 'NAME': 'scraping',
-        ## 'USER': 'scraper',
-        ## 'PASSWORD': 'password',
-        ## 'HOST': 'mysqlinstance.cemknam06dlj.us-east-2.rds.amazonaws.com',
-        ## 'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'scraping',
+        'USER': 'scraper',
+        'PASSWORD': 'password',
+        'HOST': 'mysqlinstance.cemknam06dlj.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',
         ## memo 126.246.37.245/32
 
     }
